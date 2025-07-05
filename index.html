@@ -90,58 +90,60 @@
   <div id="cardContainer" class="card-container"></div>
 
   <div id="detailModal">
-  <div id="closeModal">✕</div>
-  <h2>Hesap Detayları</h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <div style="flex: 1 1 30%;">
-      <label>Ad Soyad</label>
-      <input id="modalName" placeholder="İsim soy isim">
+    <div id="closeModal">✕</div>
+    <h2>Hesap Detayları</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <div style="flex: 1 1 30%;">
+        <label>Ad Soyad</label>
+        <input id="modalName" placeholder="İsim soy isim">
+      </div>
+      <div style="flex: 1 1 30%;">
+        <label>Lansman ID</label>
+        <input id="modalLansman" placeholder="Lansman ID">
+      </div>
+      <div style="flex: 1 1 30%;">
+        <label>Doğum Tarihi</label>
+        <input id="modalBirth" placeholder="Doğum Tarihi">
+      </div>
+      <div style="flex: 1 1 30%;">
+        <label>Cinsiyet</label>
+        <input id="modalGender" placeholder="Cinsiyet">
+      </div>
+      <div style="flex: 1 1 30%;">
+        <label>Email</label>
+        <input id="modalEmail" placeholder="Email">
+      </div>
+      <div style="flex: 1 1 30%;">
+        <label>Telefon</label>
+        <input id="modalPhone" placeholder="Telefon">
+      </div>
+      <div style="flex: 1 1 30%;">
+        <label>Kurtarma Maili</label>
+        <input id="modalRecovery" placeholder="Recovery Mail">
+      </div>
+      <div style="flex: 1 1 30%;">
+        <label>İstatistik</label>
+        <input id="modalStatus" placeholder="İstatistik">
+      </div>
+      <div style="flex: 1 1 30%;">
+        <label>Hesap Açılış</label>
+        <input id="modalOpening" placeholder="Hesap Açılış">
+      </div>
+      <div style="flex: 1 1 100%;">
+        <label>Satın Alma Mağazalar</label>
+        <input id="modalStores" placeholder="Satın alma mağazalar">
+      </div>
+      <div style="flex: 1 1 100%;">
+        <label>Ek Bilgiler</label>
+        <textarea id="modalNotes" placeholder="Ek Bilgiler"></textarea>
+      </div>
     </div>
-    <div style="flex: 1 1 30%;">
-      <label>Lansman ID</label>
-      <input id="modalLansman" placeholder="Lansman ID">
-    </div>
-    <div style="flex: 1 1 30%;">
-      <label>Doğum Tarihi</label>
-      <input id="modalBirth" placeholder="Doğum Tarihi">
-    </div>
-    <div style="flex: 1 1 30%;">
-      <label>Cinsiyet</label>
-      <input id="modalGender" placeholder="Cinsiyet">
-    </div>
-    <div style="flex: 1 1 30%;">
-      <label>Email</label>
-      <input id="modalEmail" placeholder="Email">
-    </div>
-    <div style="flex: 1 1 30%;">
-      <label>Telefon</label>
-      <input id="modalPhone" placeholder="Telefon">
-    </div>
-    <div style="flex: 1 1 30%;">
-      <label>Kurtarma Maili</label>
-      <input id="modalRecovery" placeholder="Recovery Mail">
-    </div>
-    <div style="flex: 1 1 30%;">
-      <label>İstatistik</label>
-      <input id="modalStatus" placeholder="İstatistik">
-    </div>
-    <div style="flex: 1 1 30%;">
-      <label>Hesap Açılış</label>
-      <input id="modalOpening" placeholder="Hesap Açılış">
-    </div>
-    <div style="flex: 1 1 100%;">
-      <label>Satın Alma Mağazalar</label>
-      <input id="modalStores" placeholder="Satın alma mağazalar">
-    </div>
-    <div style="flex: 1 1 100%;">
-      <label>Ek Bilgiler</label>
-      <textarea id="modalNotes" placeholder="Ek Bilgiler"></textarea>
-    </div>
+    <button onclick="saveDetails()">Kaydet</button>
   </div>
-  <button onclick="saveDetails()">Kaydet</button>
-</div>
 
   <script>
+    const sheetScriptURL = "https://script.google.com/macros/s/AKfycbxY75cLJUKVmGQK-iOwIvbX39RFbPWKFel5Rkyk1ePcORpLgknlwaRiqGPnDAjGbCzGSA/exec";
+
     const people = Array.from({ length: 200 }, (_, i) => ({
       name: "Ad Soyad " + (i+1),
       lansman: "LNS-" + (i+1),
