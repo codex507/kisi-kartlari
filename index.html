@@ -217,23 +217,46 @@
     }
 
     function saveDetails() {
-      if (selectedIndex !== null) {
-        const p = people[selectedIndex];
-        p.name = document.getElementById('modalName').value;
-        p.lansman = document.getElementById('modalLansman').value;
-        p.birth = document.getElementById('modalBirth').value;
-        p.gender = document.getElementById('modalGender').value;
-        p.email = document.getElementById('modalEmail').value;
-        p.phone = document.getElementById('modalPhone').value;
-        p.recovery = document.getElementById('modalRecovery').value;
-        p.status = document.getElementById('modalStatus').value;
-        p.opening = document.getElementById('modalOpening').value;
-        p.stores = document.getElementById('modalStores').value;
-        p.notes = document.getElementById('modalNotes').value;
-        renderCards();
-        detailModal.style.display = 'none';
-      }
-    }
+  if (selectedIndex !== null) {
+    const p = people[selectedIndex];
+    p.name = document.getElementById('modalName').value;
+    p.lansman = document.getElementById('modalLansman').value;
+    p.birth = document.getElementById('modalBirth').value;
+    p.gender = document.getElementById('modalGender').value;
+    p.email = document.getElementById('modalEmail').value;
+    p.phone = document.getElementById('modalPhone').value;
+    p.recovery = document.getElementById('modalRecovery').value;
+    p.status = document.getElementById('modalStatus').value;
+    p.opening = document.getElementById('modalOpening').value;
+    p.stores = document.getElementById('modalStores').value;
+    p.notes = document.getElementById('modalNotes').value;
+
+    // ✅ Google Sheets'e veri gönder
+    fetch(sheetScriptURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        index: selectedIndex,
+        name: p.name,
+        lansman: p.lansman,
+        birth: p.birth,
+        gender: p.gender,
+        email: p.email,
+        phone: p.phone,
+        recovery: p.recovery,
+        status: p.status,
+        opening: p.opening,
+        stores: p.stores,
+        extra: p.notes
+      })
+    });
+
+    renderCards();
+    detailModal.style.display = 'none';
+  }
+}
 
     document.getElementById('closeModal').onclick = () => detailModal.style.display = 'none';
     document.getElementById('searchInput').oninput = function() {
